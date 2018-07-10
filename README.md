@@ -47,3 +47,7 @@ DELETE /requets/id	Delete a ride request
 Authors
 
 Kwame Asiago
+
+Travis 
+
+[![Build Status](https://travis-ci.org/SelaDanti/RideMyWay2.0.svg?branch=ft-signup-158949454)](https://travis-ci.org/SelaDanti/RideMyWay2.0)

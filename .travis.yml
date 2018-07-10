@@ -16,7 +16,7 @@ before_script:
   - psql -c "CREATE DATABASE RideMyWay;" -U postgres
 
 script:
-  - pytest  --with-coverage --cover-package=app && coveralls
+  - pytest  --cov=app && coveralls
 
 after_success:
 - "coveralls"

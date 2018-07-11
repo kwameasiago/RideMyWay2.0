@@ -1,4 +1,5 @@
 from .verifications import Verifications
+from .con import con
 
 
 class Register(Verifications):
@@ -23,3 +24,7 @@ class Register(Verifications):
 			return self.user_type
 		else:
 			return False
+
+	def insert_data(self):
+		pass
+

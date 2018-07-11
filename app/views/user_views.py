@@ -24,4 +24,7 @@ class Signup(Resource):
 		if register.verify_data() is not False:
 			return register.verify_data()
 		else:
-			return {'result':'test'}
+			if register.email_exist() is not True:
+				return register.insert_data()
+			else:
+				return {'result':'Email exist'},405

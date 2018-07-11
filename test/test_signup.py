@@ -5,6 +5,9 @@ from app.views.views import app
 
 
 class  UserTest(unittest.TestCase):
+	"""
+	class to test user signup
+	"""
 	def setUp(self):
 		self.user_data= {
 		'first_name': 'john',

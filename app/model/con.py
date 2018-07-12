@@ -1,8 +1,8 @@
 import psycopg2
+from ..views.views import app
+database = app.config['DBNAME']
+password = app.config['PASSWORD']
+user = app.config['USER']
+host = app.config['HOST']
 
-
-database = 'ridemyway'
-password = 'python'
-user = 'postgres'
-
-con = psycopg2.connect(dbname=database,password=password,host='localhost',user=user)
+con = psycopg2.connect(dbname=database,password=password,host=host,user=user)

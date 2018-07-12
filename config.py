@@ -1,3 +1,6 @@
 DEBUG = True
-HOST = '0.0.0.0'
-PORT = 6000
+DBNAME = 'ridemyway'
+USER = 'postgres'
+PASSWORD = 'python'
+HOST = 'localhost'
+ENV = 'development'

@@ -1,6 +1,6 @@
 import psycopg2
 from ..views.views import app
-database = app.config['DBNAME']
+database = app.config['DATABASE_NAME']
 password = app.config['PASSWORD']
 user = app.config['USER']
 host = app.config['HOST']

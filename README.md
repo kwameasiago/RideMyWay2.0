@@ -6,7 +6,7 @@ Motivation
 
 Ride My Way focuses on reducing carbon emission, traffic jam by allowing people to share a ride and reduce the cost and hustle of driving
 
-**Code style**
+**Code style** 
 The user interface was build using css javascript and HTML The api was build using python
 
 Installation

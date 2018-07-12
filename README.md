@@ -48,6 +48,6 @@ Authors
 
 Kwame Asiago
 
-Travis [![Build Status](https://travis-ci.org/SelaDanti/RideMyWay2.0.svg?branch=ft-signup-158949454)](https://travis-ci.org/SelaDanti/RideMyWay2.0)
+[![Build Status](https://travis-ci.org/SelaDanti/RideMyWay2.0.svg?branch=ft-signup-158949454)](https://travis-ci.org/SelaDanti/RideMyWay2.0)
 
-Coveralls [![Coverage Status](https://coveralls.io/repos/github/SelaDanti/RideMyWay2.0/badge.png?branch=ft-signup-158949454)](https://coveralls.io/github/SelaDanti/RideMyWay2.0?branch=ft-signup-158949454)
+[![Coverage Status](https://coveralls.io/repos/github/SelaDanti/RideMyWay2.0/badge.png?branch=ft-signup-158949454)](https://coveralls.io/github/SelaDanti/RideMyWay2.0?branch=ft-signup-158949454)

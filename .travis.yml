@@ -13,7 +13,7 @@ env:
   - DB = postgres USER = postgres PASSWORD = 'python' 
 
 before_script:
-  - export APP_SETTINGS =  'test_config.cfg'
+  - export APP_SETTINGS =  '../../test_config.cfg'
   - psql -c "CREATE DATABASE RideMyWay;" -U postgres
 
 script:

@@ -11,11 +11,15 @@ signup_model = api.model('signup',{
 	'user_type': fields.String,
 	'password': fields.String
 	}) 
+signin_model = api.model('singin',{
+	'email': fields.String,
+	'password': fields.String
+	})
 
 
 class Signup(Resource):
 	"""
-	class for user signup method
+	class for user signing up users
 	"""
 	@api.expect(signup_model)
 	def post(self):
@@ -28,3 +32,12 @@ class Signup(Resource):
 				return register.insert_data()
 			else:
 				return {'result':'Email exist'},405
+
+
+class Signin(Resource):
+	"""
+	class for signing in users
+	"""
+	@api.expect(signin_model)
+	def post(self):
+		return{'result':'test'}

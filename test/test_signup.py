@@ -1,9 +1,8 @@
 import unittest
 import json
-import psycopg2
 
 from app.views.views import app
-from .clean import delete_record
+from .clean import reset_db
 
 
 class  UserTest(unittest.TestCase):
@@ -20,10 +19,9 @@ class  UserTest(unittest.TestCase):
 		}
 		self.content_type = 'application/json'
 		self.test = app.test_client()
-		app.config['DBNAME'] = 'test_ridemyway'
 
 	def tearDown(self):
-		delete_record(self.user_data['email'])
+		reset_db()
 		self.user_data = None
 		self.content_type = None
 		self.test = None

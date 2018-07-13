@@ -6,6 +6,9 @@ from .con import con
 
 
 class Register(Verifications):
+	"""
+	class to handle user registration
+	"""
 	def __init__(self,data):
 		self.string_list = [
 		data['first_name'],data['last_name'],

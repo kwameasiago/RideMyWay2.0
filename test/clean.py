@@ -1,10 +1,8 @@
 from app.model.con import con
 
 
-def delete_record(email):
+def reset_db():
 	cur = con.cursor()
-	sql = """
-	DELETE FROM users WHERE EMAIL = '{}'
-	""".format(email)
+	sql = "DROP TABLE users;"
 	cur.execute(sql)
 	con.commit()

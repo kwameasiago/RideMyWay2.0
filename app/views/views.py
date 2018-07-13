@@ -14,3 +14,4 @@ api = Api(app,version=2.0,title='Ride My Way')
 from .user_views import *
 
 api.add_resource(Signup,'/auth/signup')
+api.add_resource(Signin,'/auth/login')

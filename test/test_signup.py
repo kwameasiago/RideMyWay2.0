@@ -23,7 +23,7 @@ class  SignupTest(unittest.TestCase):
 		app.config['DBNAME'] = 'test_ridemyway'
 
 	def tearDown(self):
-		delete_record(self.user_data['email'])
+		delete_record()
 		self.user_data = None
 		self.content_type = None
 		self.test = None

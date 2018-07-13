@@ -20,7 +20,6 @@ class  UserTest(unittest.TestCase):
 		}
 		self.content_type = 'application/json'
 		self.test = app.test_client()
-		app.config['DBNAME'] = 'test_ridemyway'
 
 	def tearDown(self):
 		delete_record(self.user_data['email'])

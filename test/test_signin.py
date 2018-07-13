@@ -83,3 +83,6 @@ class TestSignIn(unittest.TestCase):
 		data = json.loads(response.get_data().decode("UTF-8"))
 		self.assertIn('Token',str(data))
 		self.delete_record
+
+if __name__ == '__main__':
+	unittest.main()

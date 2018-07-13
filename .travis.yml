@@ -10,13 +10,15 @@ install:
   - pip install -r requirements.txt
 
 env:
-  - DB = postgres USER = postgres PASSWORD = 'python'
+  - DB = postgres USER = postgres PASSWORD = 'python' 
 
 before_script:
-  - psql -c "CREATE DATABASE RideMyWay;" -U postgres
+  - psql -c "CREATE DATABASE test_ridemyway;" -U postgres
+  - export APP_SETTINGS='../../test_config.cfg'  
 
 script:
-  - pytest  --with-coverage --cover-package=app && coveralls
+  - pytest  --cov=app 
+  - coveralls
 
 after_success:
-- "coveralls"
+  - coveralls

@@ -54,6 +54,7 @@ class TestSignIn(unittest.TestCase):
 		response = self.test.post('auth/login',content_type=self.content_type,
 			data=json.dumps(self.wrong_password))
 		self.assertEqual(response.status_code,405)
+		delete_record(self.signup['email'])
 
 	def test_invalid_password_output(self):
 		response = self.test.post('auth/signup',content_type=self.content_type,
@@ -62,6 +63,7 @@ class TestSignIn(unittest.TestCase):
 			data=json.dumps(self.wrong_password))
 		data = json.loads(response.get_data().decode("UTF-8"))
 		self.assertEqual(data['result'],'Invalid password')
+		delete_record(self.signup['email'])
 
 	def test_valid_data_status_code(self):
 		response = self.test.post('auth/signup',content_type=self.content_type,
@@ -69,6 +71,7 @@ class TestSignIn(unittest.TestCase):
 		response = self.test.post('auth/login',content_type=self.content_type,
 			data=json.dumps(self.valid_data))
 		self.assertEqual(response.status_code,200)
+		delete_record(self.signup['email'])
 
 	def test_valid_data_output(self):
 		response = self.test.post('auth/signup',content_type=self.content_type,
@@ -77,3 +80,4 @@ class TestSignIn(unittest.TestCase):
 			data=json.dumps(self.valid_data))
 		data = json.loads(response.get_data().decode("UTF-8"))
 		self.assertIn('Token',str(data))
+		delete_record(self.signup['email'])

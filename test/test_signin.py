@@ -13,7 +13,7 @@ class TestSignIn(unittest.TestCase):
 		self.signup= {
 		'first_name': 'test',
 		'last_name': 'test',
-		'email': 'test@gmail.com',
+		'email': 'testsignin@gmail.com',
 		'user_type': 'driver',
 		'password': 'test'
 		}
@@ -22,11 +22,11 @@ class TestSignIn(unittest.TestCase):
 		'password': 'password'
 		}
 		self.wrong_password = {
-		'email': 'test@gmail.com',
+		'email': 'testsignin@gmail.com',
 		'password': 'notpassword'
 		}
 		self.valid_data = {
-		'email': 'test@gmail.com',
+		'email': 'testsignin@gmail.com',
 		'password': 'test'
 		}
 		self.content_type = 'Application/json'
@@ -74,9 +74,12 @@ class TestSignIn(unittest.TestCase):
 		self.assertEqual(response.status_code,200)
 
 	def test_valid_data_output(self):
-		response = self.test.post('auth/signup',content_type=self.content_type,
+		response1 = self.test.post('auth/signup',content_type=self.content_type,
 			data=json.dumps(self.signup))
 		response = self.test.post('auth/login',content_type=self.content_type,
 			data=json.dumps(self.valid_data))
 		data = json.loads(response.get_data().decode("UTF-8"))
 		self.assertIn('Token',str(data))
+
+if __name__ == '__main__':
+	unittest.main()

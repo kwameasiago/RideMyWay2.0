@@ -6,7 +6,7 @@ from app.views.views import app
 from .clean import delete_record
 
 
-class  UserTest(unittest.TestCase):
+class  SignupTest(unittest.TestCase):
 	"""
 	class to test user signup
 	"""

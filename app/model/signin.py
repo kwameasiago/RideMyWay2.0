@@ -31,11 +31,11 @@ class Login(Verifications):
 			cur.execute(sql)
 			item = cur.fetchone()
 			if item is None:
-				return {'result': 'Email does not exist'}
+				return {'result': 'Email does not exist'},405
 			else:
 				if check_password_hash(item[0],self.data['password']) is True:
 					return {'Token': token}
 				else:
-					return {'result':'Password is invalid'}
+					return {'result':'Invalid password'},405
 		except psycopg2.Error as e:
 			return {e.pgcode:e.pgerror}

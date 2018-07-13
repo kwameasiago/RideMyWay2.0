@@ -1,9 +1,12 @@
+import jwt
+import datetime
+
 from flask import request
 from flask_restplus import Resource, fields
 
 from ..model.signup import Register
 from ..model.signin import Login
-from .views import api
+from .views import api, app
 
 signup_model = api.model('signup',{
 	'first_name': fields.String,
@@ -46,4 +49,8 @@ class Signin(Resource):
 		if login.verify_data() is not False:
 			return login.verify_data()
 		else:
-			return login.login('token')
+			token = jwt.encode({'user':data['email'],
+				'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=30)},
+				app.config['SECRET_KEY'])
+			token = token.decode('utf-8')
+			return login.login(token)

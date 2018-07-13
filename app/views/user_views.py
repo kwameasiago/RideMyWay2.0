@@ -2,6 +2,7 @@ from flask import request
 from flask_restplus import Resource, fields
 
 from ..model.signup import Register
+from ..model.signin import Login
 from .views import api
 
 signup_model = api.model('signup',{
@@ -40,4 +41,9 @@ class Signin(Resource):
 	"""
 	@api.expect(signin_model)
 	def post(self):
-		return{'result':'test'}
+		data = request.get_json()
+		login = Login(data)
+		if login.verify_data() is not False:
+			return login.verify_data()
+		else:
+			return login.login('token')

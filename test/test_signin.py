@@ -2,6 +2,7 @@ import unittest
 import json
 
 from app.views.views import app
+from .clean import reset_db
 
 
 class TestSignIn(unittest.TestCase):
@@ -9,6 +10,13 @@ class TestSignIn(unittest.TestCase):
 	class to test signin view
 	"""
 	def setUp(self):
+		self.signup= {
+		'first_name': 'test',
+		'last_name': 'test',
+		'email': 'test@gmail.com',
+		'user_type': 'driver',
+		'password': 'test'
+		}
 		self.wrong_email = {
 		'email': 'noteexist@gmail.com',
 		'password': 'password'
@@ -18,16 +26,17 @@ class TestSignIn(unittest.TestCase):
 		'password': 'notpassword'
 		}
 		self.valid_data = {
-		'email': 'noteexist@gmail.com',
-		'password': 'password'
+		'email': 'test@gmail.com',
+		'password': 'test'
 		}
 		self.content_type = 'Application/json'
 		self.test = app.test_client()
 
 	def tearDown(self):
+		reset_db()
 		self.wrong_email = None
 		self.content_type = None
-		self.test = app.test_client()
+		self.test = None
 
 	def test_invalid_email_status_Code(self):
 		response = self.test.post('auth/login',content_type=self.content_type,
@@ -52,11 +61,15 @@ class TestSignIn(unittest.TestCase):
 		self.assertEqual(data['result'],'Invalid password')
 
 	def test_valid_data_status_code(self):
+		response = self.test.post('auth/signup',content_type=self.content_type,
+			data=json.dumps(self.signup))
 		response = self.test.post('auth/login',content_type=self.content_type,
 			data=json.dumps(self.valid_data))
 		self.assertEqual(response.status_code,200)
 
 	def test_valid_data_output(self):
+		response = self.test.post('auth/signup',content_type=self.content_type,
+			data=json.dumps(self.signup))
 		response = self.test.post('auth/login',content_type=self.content_type,
 			data=json.dumps(self.valid_data))
 		data = json.loads(response.get_data().decode("UTF-8"))

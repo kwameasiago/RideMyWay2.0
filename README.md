@@ -31,4 +31,4 @@ DELETE /requets/id	Delete a ride request
 ***Authors**  
 Kwame Asiago
 
-[![Build Status](https://travis-ci.org/SelaDanti/RideMyWay2.0.svg?branch=ft-signup-158949454)](https://travis-ci.org/SelaDanti/RideMyWay2.0)  [![Coverage Status](https://coveralls.io/repos/github/SelaDanti/RideMyWay2.0/badge.svg?branch=ft-post-ride-159054146)](https://coveralls.io/github/SelaDanti/RideMyWay2.0?branch=ft-post-ride-159054146)
+[![Build Status](https://travis-ci.org/SelaDanti/RideMyWay2.0.svg?branch=ft-post-ride-159054146)](https://travis-ci.org/SelaDanti/RideMyWay2.0)  [![Coverage Status](https://coveralls.io/repos/github/SelaDanti/RideMyWay2.0/badge.svg?branch=ft-post-ride-159054146)](https://coveralls.io/github/SelaDanti/RideMyWay2.0?branch=ft-post-ride-159054146)

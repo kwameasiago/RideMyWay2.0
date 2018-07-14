@@ -15,6 +15,7 @@ class PostRideTest(unittest.TestCase):
 		'start': 'kahawa',
 		'finish': 'mwiki'
 		}
+		self.bad_headers ={'X-API-KEY':'not token'}
 
 	def tearDown(self):
 		self.test = None
@@ -33,12 +34,12 @@ class PostRideTest(unittest.TestCase):
 
 	def test_invalid_token_status_code(self):
 		response = self.test.post('user/rides',content_type=self.content_type,
-			data=json.dumps(self.ride_data))
+			data=json.dumps(self.ride_data),headers=self.bad_headers)
 		self.assertEqual(response.status_code,405)
 
 	def test_invalid_token_output(self):
 		response = self.test.post('user/rides',content_type=self.content_type,
-			data=json.dumps(self.ride_data))
+			data=json.dumps(self.ride_data),headers=self.bad_headers)
 		data = json.loads(response.get_data().decode('UTF-8'))
 		self.assertEqual(data['result'],'Token is invalid')
 
@@ -51,4 +52,4 @@ class PostRideTest(unittest.TestCase):
 	def test_valid_ride_status_code(self):
 		response = self.test.post('user/rides',content_type=self.content_type,
 			data=json.dumps(self.ride_data))
-		self.assertEqual(response.status_code,405)
+		self.assertEqual(response.status_code,201)

@@ -46,7 +46,7 @@ class PostRideTest(unittest.TestCase):
 		response = self.test.post('user/rides',content_type=self.content_type,
 			data=json.dumps(self.ride_data))
 		data = json.loads(response.get_data().decode('UTF-8'))
-		self.assertEqual(data['result'],'Token is missing')
+		self.assertEqual(data['result'],'Ride posted')
 
 	def test_valid_ride_status_code(self):
 		response = self.test.post('user/rides',content_type=self.content_type,

@@ -23,4 +23,6 @@ from .ride_views import *
 api.add_resource(Signup,'/auth/signup')
 api.add_resource(Signin,'/auth/login')
 api.add_resource(PostRide,'/user/rides')
+api.add_resource(AllRide,'/rides')
+api.add_resource(OneRide,'/rides/<rideId>')
 

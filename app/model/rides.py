@@ -66,3 +66,45 @@ class Rides(Verifications):
 		except psycopg2.Error as e:
 			con.rollback()
 			return {e.pgcode:e.pgerror}
+
+	@classmethod
+	def getAllRides(cls):
+		rides=[]
+		try:
+			sql = "SELECT ID,START,FINISH,DEP_DATE,CAPACITY,USER_ID FROM rides;"
+			cur=con.cursor()
+			cur.execute(sql)
+			items = cur.fetchall()
+			for item in items:
+				rides.append({
+					'ID': item[0],'START':item[1],
+					'FINISH': item[2], 'DATE':item[3],
+					'CAPACITY':item[4],'USER_ID':item[5]
+					})
+			if len(rides) == 0:
+				return {'result':'0 rides found'},404
+			else:
+				return rides,200
+		except psycopg2.Error as e:
+			return {e.pgcode:e.pgerror}
+
+	@classmethod
+	def getOneRide(cls,rideId):
+		rides=[]
+		try:
+			sql = "SELECT ID,START,FINISH,DEP_DATE,CAPACITY,USER_ID FROM rides WHERE ID={};".format(rideId)
+			cur=con.cursor()
+			cur.execute(sql)
+			items = cur.fetchall()
+			for item in items:
+				rides.append({
+					'ID': item[0],'START':item[1],
+					'FINISH': item[2], 'DATE':item[3],
+					'CAPACITY':item[4],'USER_ID':item[5]
+					})
+			if len(rides) == 0:
+				return {'result':'0 rides found'},404
+			else:
+				return rides,200
+		except psycopg2.Error as e:
+			return {e.pgcode:e.pgerror}

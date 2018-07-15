@@ -50,7 +50,7 @@ class Signin(Resource):
 			return login.verify_data()
 		else:
 			token = jwt.encode({'user':data['email'],
-				'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=30)},
+				'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=230)},
 				app.config['SECRET_KEY'])
-			token = token.decode('utf-8')
+			token = token.decode('UTF-8')
 			return login.login(token)

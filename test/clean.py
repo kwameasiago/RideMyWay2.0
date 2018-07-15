@@ -9,3 +9,12 @@ def delete_record():
 		con.commit()
 	except:
 		con.rollback()
+
+def delete_rides():
+	try:
+		cur = con.cursor()
+		sql = "DROP TABLE rides"
+		cur.execute(sql)
+		con.commit()
+	except:
+		con.rollback()

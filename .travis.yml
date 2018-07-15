@@ -21,4 +21,4 @@ script:
   - coveralls
 
 after_success:
-  - coveralls
+  - coveralls 

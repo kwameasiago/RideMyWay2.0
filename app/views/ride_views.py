@@ -28,3 +28,14 @@ class PostRide(Resource):
 			return rides.verify_data()
 		else:
 			return rides.add_ride()
+
+class AllRide(Resource):
+	@token_required
+	@api.doc(security='Ride My Way')
+	def get(self):
+		return Rides.getAllRides()
+class OneRide(Resource):
+	@token_required
+	@api.doc(security='Ride My Way')
+	def get(self,rideId):
+		return Rides.getOneRide(rideId)

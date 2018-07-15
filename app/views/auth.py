@@ -1,5 +1,9 @@
-from flask import request
+import jwt
+
 from functools import wraps
+from flask import request
+
+from .views import app
 
 def token_required(f):
 	@wraps(f)
@@ -8,12 +12,12 @@ def token_required(f):
 		if 'X-API-KEY' in request.headers:
 			token = request.headers['X-API-KEY']
 		if not token:
-			return {'result': 'Token is missing'}, 405
+			return {'result': 'Token is missing'},405
 
 		try:
 			data = jwt.decode(token,app.config['SECRET_KEY'])
 		except:
-			return {'result': 'Token is invalid'}, 405
+			return {'result': 'Token is invalid'},405
 
 		return f(*args,**kwargs)
 

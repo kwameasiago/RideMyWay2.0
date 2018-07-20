@@ -1,0 +1,24 @@
+language: python
+
+python:
+  - "3.5.2"
+
+services:
+  - postgresql
+
+install:
+  - pip install -r requirements.txt
+
+env:
+  - DB = postgres USER = postgres PASSWORD = 'python' 
+
+before_script:
+  - psql -c "CREATE DATABASE test_ridemyway;" -U postgres
+  - export APP_SETTINGS='../../test_config.cfg'  
+
+script:
+  - pytest  --cov=app 
+  - coveralls
+
+after_success:
+  - coveralls 
